@@ -1,6 +1,6 @@
 import formatNumber from '@/utils';
 import getFinancialAdvice from '@/utils/getFinancialAdvice';
-import { PiggyBank, ReceiptText, Wallet, Sparkles, CircleDollarSign } from 'lucide-react';
+import { PiggyBank, ReceiptText, Wallet, Sparkles, CircleDollarSign, Landmark } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import CardItem from './CardItem';
 
@@ -28,7 +28,6 @@ function CardInfo({ budgetList, incomeList }) {
   }, [totalBudget, totalIncome, totalSpend]);
 
   const CalculateCardInfo = () => {
-    // console.log(budgetList);
     let totalBudget_ = 0;
     let totalSpend_ = 0;
     let totalIncome_ = 0;
@@ -46,6 +45,10 @@ function CardInfo({ budgetList, incomeList }) {
     setTotalBudget(totalBudget_);
     setTotalSpend(totalSpend_);
   };
+
+  console.log(totalIncome, totalBudget, totalSpend);
+
+  let totalAcis = totalIncome - (totalBudget + totalSpend);
 
   return (
     <div>
@@ -69,10 +72,11 @@ function CardInfo({ budgetList, incomeList }) {
           </div>
 
           <div className="mt-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <CardItem title="Total Budget" value={`Rp${formatNumber(totalBudget)}`} Icon={PiggyBank} />
-            <CardItem title="Total Spend" value={`Rp${formatNumber(totalSpend)}`} Icon={ReceiptText} />
-            <CardItem title="No. Of Budget" value={budgetList?.length} Icon={Wallet} />
-            <CardItem title="Sum of Income Streams" value={`Rp${formatNumber(totalIncome)}`} Icon={CircleDollarSign} />
+            <CardItem title="Total Acis" value={`Rp ${formatNumber(totalAcis)}`} Icon={Landmark} bg="bg-blue-800" />
+            <CardItem title="Total Budget" value={`Rp ${formatNumber(totalBudget)}`} Icon={PiggyBank} bg="bg-green-700" />
+            <CardItem title="Total Spend" value={`Rp ${formatNumber(totalSpend)}`} Icon={ReceiptText} bg="bg-red-600" />
+            <CardItem title="No. Of Budget" value={budgetList?.length} Icon={Wallet} bg="bg-blue-800" />
+            <CardItem title="Latest Income" value={`Rp ${formatNumber(totalIncome)}`} Icon={CircleDollarSign} bg="bg-blue-800" />
           </div>
         </div>
       ) : (

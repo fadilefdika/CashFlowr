@@ -31,6 +31,7 @@
     "react-dom": "^18",
     "recharts": "^2.12.5",
     "sonner": "^1.4.41",
+    "sweetalert2": "^11.14.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

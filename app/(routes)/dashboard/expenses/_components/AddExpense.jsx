@@ -6,6 +6,7 @@ import { Loader } from 'lucide-react';
 import moment from 'moment';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
+import Swal from 'sweetalert2';
 
 function AddExpense({ budgetId, user, refreshData, budgetInfo }) {
   const [name, setName] = useState('');
@@ -49,7 +50,13 @@ function AddExpense({ budgetId, user, refreshData, budgetInfo }) {
         disabled={!(name && amount) || loading}
         onClick={() => {
           if (parseFloat(budgetInfo.amount) < parseFloat(amount)) {
-            alert('Pengeluaran melebihi budget');
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Pengeluaran Melebihi Budget',
+            });
+            setAmount('');
+            setName('');
           } else {
             addNewExpense();
           }

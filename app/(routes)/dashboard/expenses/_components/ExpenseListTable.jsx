@@ -4,6 +4,7 @@ import { eq } from 'drizzle-orm';
 import { Trash } from 'lucide-react';
 import React from 'react';
 import { toast } from 'sonner';
+import formatNumber from '@/utils';
 
 function ExpenseListTable({ expensesList, refreshData }) {
   const deleteExpense = async (expense) => {
@@ -37,7 +38,7 @@ function ExpenseListTable({ expensesList, refreshData }) {
       {expensesList.map((expenses, index) => (
         <div key={index} className="grid grid-cols-4 bg-slate-50 rounded-bl-xl rounded-br-xl p-2">
           <h2>{expenses.name}</h2>
-          <h2>{expenses.amount}</h2>
+          <h2>{formatNumber(expenses.amount)}</h2>
           <h2>{formatDate(expenses.createdAt)}</h2>
           <h2 onClick={() => deleteExpense(expenses)} className="text-red-500 cursor-pointer">
             Delete

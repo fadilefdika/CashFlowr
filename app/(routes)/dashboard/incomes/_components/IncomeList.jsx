@@ -1,11 +1,11 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import CreateIncomes from "./CreateIncomes";
-import { db } from "@/utils/dbConfig";
-import { desc, eq, getTableColumns, sql } from "drizzle-orm";
-import { Incomes, Expenses } from "@/utils/schema";
-import { useUser } from "@clerk/nextjs";
-import IncomeItem from "./IncomeItem";
+'use client';
+import React, { useEffect, useState } from 'react';
+import CreateIncomes from './CreateIncomes';
+import { db } from '@/utils/dbConfig';
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
+import { Incomes, Expenses } from '@/utils/schema';
+import { useUser } from '@clerk/nextjs';
+import IncomeItem from './IncomeItem';
 
 function IncomeList() {
   const [incomelist, setIncomelist] = useState([]);
@@ -37,9 +37,7 @@ function IncomeList() {
       >
         <CreateIncomes refreshData={() => getIncomelist()} />
         {incomelist?.length > 0
-          ? incomelist.map((budget, index) => (
-              <IncomeItem budget={budget} key={index} />
-            ))
+          ? incomelist.map((budget, index) => <IncomeItem budget={budget} key={index} />)
           : [1, 2, 3, 4, 5].map((item, index) => (
               <div
                 key={index}

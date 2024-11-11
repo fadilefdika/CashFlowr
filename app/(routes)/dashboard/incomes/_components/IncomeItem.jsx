@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
 function IncomeItem({ budget }) {
   const calculateProgressPerc = () => {
@@ -25,7 +25,7 @@ function IncomeItem({ budget }) {
             <h2 className="text-sm text-gray-500">{budget.totalItem} Item</h2>
           </div>
         </div>
-        <h2 className="font-bold text-primary text-lg"> ${budget.amount}</h2>
+        <h2 className="font-bold text-primary text-lg"> Rp {budget.amount}</h2>
       </div>
     </div>
   );
