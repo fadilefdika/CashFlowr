@@ -46,8 +46,6 @@ function CardInfo({ budgetList, incomeList }) {
     setTotalSpend(totalSpend_);
   };
 
-  console.log(totalIncome, totalBudget, totalSpend);
-
   let totalAcis = totalIncome - (totalBudget + totalSpend);
 
   return (

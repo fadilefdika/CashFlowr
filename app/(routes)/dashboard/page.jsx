@@ -8,6 +8,8 @@ import { Budgets, Expenses, Incomes } from '@/utils/schema';
 import BarChartDashboard from './_components/BarChartDashboard';
 import BudgetItem from './budgets/_components/BudgetItem';
 import ExpenseListTable from './expenses/_components/ExpenseListTable';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 function Dashboard() {
   const { user } = useUser();
 
@@ -88,7 +90,12 @@ function Dashboard() {
           <ExpenseListTable expensesList={expensesList} refreshData={() => getBudgetList()} />
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="font-bold text-lg">Latest Budgets</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="font-bold text-lg">Latest Budgets</h2>
+            <Link href={'/dashboard/budgets'}>
+              <Button>Tambah Budget</Button>
+            </Link>
+          </div>
           {budgetList?.length > 0
             ? budgetList.map((budget, index) => <BudgetItem budget={budget} key={index} />)
             : [1, 2, 3, 4].map((item, index) => (
